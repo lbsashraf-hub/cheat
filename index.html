@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juragan Kill - Toko Lisensi VIP Anime Edition</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        sakura: {
+                            50: '#fff0f6',
+                            100: '#ffe3f1',
+                            300: '#ffb3d9',
+                            400: '#ff80bf',
+                            500: '#ff2a8d',
+                            600: '#e60067',
+                            700: '#b3004b',
+                            900: '#1a000d',
+                        },
+                        cyber: {
+                            bg: '#0a0814',
+                            card: '#130e26',
+                            border: '#2a1f4d',
+                            cyan: '#00f0ff',
+                            purple: '#8a2be2',
+                            accent: '#ff007f'
+                        }
+                    },
+                    fontFamily: {
+                        anime: ['"M PLUS Rounded 1c"', 'sans-serif'],
+                        tech: ['"Zen Dots"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Zen+Dots&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: #0a0814;
+            color: #f3f4f6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 141, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .glass-anime {
+            background: rgba(19, 14, 38, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 42, 141, 0.2);
+        }
+
+        .glass-anime:hover {
+            border-color: rgba(255, 42, 141, 0.6);
+            box-shadow: 0 0 25px rgba(255, 42, 141, 0.3);
+        }
+
+        .sakura-gradient-text {
+            background: linear-gradient(135deg, #ff80bf 0%, #ff2a8d 50%, #00f0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0a0814;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ff2a8d;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar min-h-screen flex flex-col justify-between selection:bg-sakura-500 selection:text-white">
+
+    <!-- Top Banner Notification -->
+    <div class="bg-gradient-to-r from-sakura-700 via-cyber-purple to-sakura-600 text-xs py-2 px-4 text-center text-white font-bold tracking-wider uppercase flex items-center justify-center gap-2">
+        <span class="bg-white/20 px-2 py-0.5 rounded text-[10px] animate-pulse">UPDATE</span>
+        <span>🌸 Cek Status Maintenance & Safe Undetected Secara Realtime Per Merk Mod!</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 glass-anime border-b border-sakura-500/20 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sakura-500 to-cyber-cyan p-0.5 shadow-lg group-hover:rotate-6 transition-transform">
+                    <div class="w-full h-full bg-cyber-bg rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid font-anime text-sakura-500 text-xl font-bold">🌸</i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-tech text-lg sm:text-xl font-bold sakura-gradient-text tracking-wider">Juragan<span class="text-white">Kill</span></span>
+                    <span class="block text-[10px] text-sakura-300 font-semibold tracking-widest uppercase -mt-1">Anime Gaming Utility</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex flex-1 max-w-md mx-4 relative">
+                <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Cari Mobile Legends, Blood Strike, VVIP Mods, Ultra..." 
+                       class="w-full bg-cyber-bg/90 border border-sakura-500/30 rounded-full py-2 pl-10 pr-4 text-sm text-gray-200 focus:outline-none focus:border-sakura-500 focus:ring-1 focus:ring-sakura-500 transition-all">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-2.5 text-sakura-400 text-sm"></i>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="#status" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold bg-cyber-card border border-sakura-500/30 text-sakura-300 hover:text-white hover:border-sakura-500 transition-all">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    Status Cheat
+                </a>
+                <button onclick="contactAdmin('Konsultasi')" class="p-2.5 bg-sakura-500/10 border border-sakura-500/40 hover:bg-sakura-500 text-sakura-400 hover:text-white rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Admin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-8 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="relative z-10 glass-anime rounded-3xl p-6 sm:p-8 border border-sakura-500/30 overflow-hidden">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sakura-500/20 border border-sakura-500/40 text-sakura-300 text-xs font-bold mb-3">
+                    <i class="fa-solid fa-bolt text-cyber-cyan"></i> Fitur Status Maintenance Per-Merk Mod
+                </div>
+                <h1 class="font-tech text-2xl sm:text-4xl font-extrabold leading-tight tracking-wide mb-3 text-white">
+                    MOD & CHEAT VIP <span class="sakura-gradient-text">MULTI-VENDOR</span>
+                </h1>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
+                    Pilih merk mod pilihanmu. Tombol beli akan otomatis terkunci (*disabled*) jika merk pilihan sedang dalam status **MAINTENANCE**.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Category Buttons -->
+    <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="font-tech text-lg font-bold text-white flex items-center gap-2">
+                <span class="text-sakura-500">🌸</span> KATALOG GAME TERSEDIA
+            </h2>
+            <span class="text-xs text-gray-400">6 Game VIP</span>
+        </div>
+
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 custom-scrollbar">
+            <button onclick="filterCategory('all', event)" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-sakura-500 text-white border border-sakura-500 whitespace-nowrap transition-all">
+                Semua Game
+            </button>
+            <button onclick="filterCategory('ml', event)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cyber-card text-gray-300 border border-sakura-500/20 hover:border-sakura-500 whitespace-nowrap transition-all">
+                Mobile Legends
+            </button>
+            <button onclick="filterCategory('bloodstrike', event)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cyber-card text-gray-300 border border-sakura-500/20 hover:border-sakura-500 whitespace-nowrap transition-all">
+                Blood Strike
+            </button>
+            <button onclick="filterCategory('codm', event)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cyber-card text-gray-300 border border-sakura-500/20 hover:border-sakura-500 whitespace-nowrap transition-all">
+                CODM
+            </button>
+            <button onclick="filterCategory('8ball', event)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cyber-card text-gray-300 border border-sakura-500/20 hover:border-sakura-500 whitespace-nowrap transition-all">
+                8 Ball Pool
+            </button>
+            <button onclick="filterCategory('roblox', event)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cyber-card text-gray-300 border border-sakura-500/20 hover:border-sakura-500 whitespace-nowrap transition-all">
+                Roblox
+            </button>
+            <button onclick="filterCategory('pubg', event)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cyber-card text-gray-300 border border-sakura-500/20 hover:border-sakura-500 whitespace-nowrap transition-all">
+                PUBG Mobile
+            </button>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-16">
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic Cards Injected Here -->
+        </div>
+    </main>
+
+    <!-- Live Status Section -->
+    <section id="status" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-16">
+        <div class="glass-anime rounded-3xl p-6 border border-sakura-500/30">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 class="font-tech text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-shield-heart text-sakura-400"></i> STATUS MERK & ANTI-CHEAT REALTIME
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-0.5">Semua modifikator menggunakan proteksi enkripsi Kernel Bypass v4.9</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead>
+                        <tr class="border-b border-sakura-500/20 text-sakura-300">
+                            <th class="pb-3 font-bold">GAME</th>
+                            <th class="pb-3 font-bold">MERK MOD & STATUS</th>
+                            <th class="pb-3 font-bold">PROTEKSI</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statusTableBody" class="divide-y divide-sakura-500/10 text-gray-300">
+                        <!-- Injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER LENGKAP 4 KOLOM -->
+    <footer class="bg-cyber-bg/95 border-t border-sakura-500/20 pt-10 pb-6 px-4 sm:px-6 lg:px-8 text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-3">
+                <a href="#" class="flex items-center gap-2">
+                    <span class="font-tech text-lg font-bold sakura-gradient-text">JuraganKill</span>
+                </a>
+                <p class="leading-relaxed">Platform penyedia software lisensi dan modifikasi VIP terpercaya di Indonesia dengan aktivasi otomatis 24/7.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-3 uppercase tracking-wider">METODE PEMBAYARAN</h4>
+                <p class="mb-2">Mendukung QRIS, DANA, GoPay, OVO, ShopeePay, serta Transfer Bank Indonesia.</p>
+                <div class="flex flex-wrap gap-2 text-lg text-sakura-300">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <i class="fa-solid fa-wallet"></i>
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-3 uppercase tracking-wider">CHEAT TERSEDIA</h4>
+                <ul class="space-y-1.5">
+                    <li>• Mobile Legends VIP</li>
+                    <li>• Blood Strike ESP</li>
+                    <li>• CODM Aimbot</li>
+                    <li>• 8 Ball Pool Guideline</li>
+                    <li>• Roblox Executor</li>
+                    <li>• PUBG Mobile Mod</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-3 uppercase tracking-wider">BANTUAN & CS</h4>
+                <p class="mb-3">Mengalami kendala? Tim customer service kami siap membantu via WhatsApp atau Telegram.</p>
+                <button onclick="contactAdmin('Pertanyaan Umum')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Hubungi WhatsApp Admin
+                </button>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-sakura-500/10 pt-4 text-center">
+            <p>© 2026 JuraganKill. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-anime border border-sakura-500/40 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
+            <div class="p-5 border-b border-sakura-500/20 flex items-center justify-between">
+                <h3 class="font-tech text-base font-bold text-white flex items-center gap-2">
+                    <span class="text-sakura-500">🌸</span> FORM PEMESANAN LISENSI
+                </h3>
+                <button onclick="closeCheckoutModal()" class="text-gray-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 space-y-4 max-h-[80vh] overflow-y-auto custom-scrollbar">
+                <div class="bg-cyber-bg/90 border border-sakura-500/30 p-4 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <h4 id="modalTitle" class="font-bold text-white text-sm">Game Title</h4>
+                        <span id="modalDuration" class="text-xs text-sakura-300 font-semibold block">1 Hari Access</span>
+                        <span id="modalBrandDisplay" class="text-[11px] text-cyber-cyan font-bold block mt-0.5">Merk: VVIP Mods</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-gray-400 block">Total Bayar:</span>
+                        <span id="modalPrice" class="font-tech text-base font-bold text-cyber-cyan">Rp 0</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">Pilih Merk / Vendor Mod</label>
+                        <select id="modalBrandSelect" onchange="onModalBrandChange(this.value)" class="w-full bg-cyber-bg border border-sakura-500/30 rounded-xl py-2 px-3 text-xs text-cyber-cyan font-bold focus:outline-none focus:border-sakura-500">
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">Nama / Nickname Game</label>
+                        <input type="text" id="custName" placeholder="Contoh: SakuraGamer99" class="w-full bg-cyber-bg border border-sakura-500/30 rounded-xl py-2 px-3 text-xs text-gray-200 focus:outline-none focus:border-sakura-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">Nomor WhatsApp</label>
+                        <input type="text" id="custWA" placeholder="081234567890" class="w-full bg-cyber-bg border border-sakura-500/30 rounded-xl py-2 px-3 text-xs text-gray-200 focus:outline-none focus:border-sakura-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-2">Metode Pembayaran</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label class="flex items-center gap-2 p-2.5 bg-cyber-bg rounded-xl border border-sakura-500/20 cursor-pointer hover:border-sakura-500">
+                            <input type="radio" name="payment" value="QRIS" checked class="accent-sakura-500">
+                            <span>QRIS All Payment</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2.5 bg-cyber-bg rounded-xl border border-sakura-500/20 cursor-pointer hover:border-sakura-500">
+                            <input type="radio" name="payment" value="DANA" class="accent-sakura-500">
+                            <span>DANA / GoPay / OVO</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pt-2 space-y-2">
+                    <button onclick="processOrderWA()" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base"></i> Order via WhatsApp Admin
+                    </button>
+                    <button onclick="simulateInstantPay()" class="w-full py-3 rounded-xl bg-gradient-to-r from-sakura-500 to-cyber-purple hover:from-sakura-600 hover:to-cyber-purple text-white font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-sakura-500/20">
+                        <i class="fa-solid fa-bolt text-cyber-cyan"></i> Bayar Otomatis (Aktivasi Instant)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div id="successModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-anime border border-emerald-500/50 rounded-3xl w-full max-w-md p-6 text-center space-y-4">
+            <div class="w-16 h-16 bg-emerald-500/20 border border-emerald-500 rounded-full flex items-center justify-center mx-auto text-emerald-400 text-2xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-tech text-lg font-bold text-white">PEMBAYARAN BERHASIL!</h3>
+            <p class="text-xs text-gray-300">Berikut adalah Lisensi VIP Anda:</p>
+
+            <div class="bg-cyber-bg p-3.5 rounded-xl border border-sakura-500/30 flex items-center justify-between">
+                <span id="licenseKeyText" class="font-mono text-sm text-cyber-cyan font-bold tracking-wider">SAKURA-VIP-XXXX-YYYY</span>
+                <button onclick="copyLicenseKey()" class="bg-sakura-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold">
+                    <i class="fa-regular fa-copy"></i> Salin
+                </button>
+            </div>
+
+            <button onclick="closeSuccessModal()" class="w-full py-2.5 rounded-xl bg-cyber-bg border border-gray-600 text-gray-300 font-bold text-xs">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC FITUR MAINTENANCE PER MERK -->
+    <script>
+        const products = [
+            {
+                id: 'ml',
+                category: 'ml',
+                title: 'Mobile Legends VIP Mod',
+                game: 'Mobile Legends: Bang Bang',
+                badge: 'TERLARIS',
+                image: 'ml.jpg',
+                features: ['Drone View 2x - 5x', 'Map Hack Radar Enemy', 'Cooldown Skill Display', 'Bypass MTP Anti-Cheat'],
+                brandData: {
+                    'VVIP Mods': {
+                        status: 'UNDETECTED', // 'UNDETECTED' atau 'MAINTENANCE'
+                        prices: { '3d': 25000, '7d': 70000, '30d': 100000, '60d': 160000 }
+                    },
+                    'Nova Premium': {
+                        status: 'UNDETECTED',
+                        prices: { '3d': 25000, '7d': 50000, '30d': 100000, '60d': 160000 }
+                    },
+                    'Ultra Plugin': {
+                        status: 'UNDETECTED',
+                        prices: { '3d': 25000, '7d': 50000, '30d': 100000, '60d': 160000 }
+                    }
+                }
+            },
+            {
+                id: 'bloodstrike',
+                category: 'bloodstrike',
+                title: 'Blood Strike ESP Mod',
+                game: 'Blood Strike FPS',
+                badge: 'NEW UPDATE',
+                image: 'blood-strike.jpg',
+                features: ['ESP Player Box & Health', 'Silent Aimbot Headshot', 'No Recoil & Fast Reload', 'Unlimted UAV Radar'],
+                
+                // =========================================================================
+                // 🌸 CONTOH MENGATUR MERK VVIP MODS MENJADI MAINTENANCE
+                // =========================================================================
+                brandData: {
+                    'VVIP Mods': {
+                        status: 'UNDETECTED', // 👈 VVIP Mods dibuat Maintenance
+                        prices: { '3d': 50000, '7d': 100000, '30d': 200000 }
+                    },
+                    'Ultra Plugin': {
+                        status: 'UNDETECTED',   // 👈 Ultra Plugin tetap jalan
+                        prices: { '3d': 25000, '7d': 50000, '30d': 100000, '60d': 180000 }
+                    },
+                    'Nova Premium': {
+                        status: 'UNDETECTED',
+                        prices: { '3d': 20000, '3d': 25000, '7d': 50000 }
+                    }
+                }
+            },
+            {
+                id: 'codm',
+                category: 'codm',
+                title: 'CODM Aimbot Pro',
+                game: 'Call of Duty: Mobile',
+                badge: 'HOT',
+                image: 'codm.jpg',
+                features: ['Auto Aim Lock Target', 'High Damage Multiplier', 'Wallhack ESP Distance', 'Bypass Emulator Detect'],
+                brandData: {
+                    'VVIP Mods': {
+                        status: 'UNDETECTED',
+                        prices: { '1d': 25000, '7d': 75000, '30d': 190000, 'life': 480000 }
+                    },
+                    'Kuroko Injector': {
+                        status: 'MAINTENANCE', // Contoh Maintenance
+                        prices: { '1d': 20000, '7d': 60000, '30d': 150000, 'life': 400000 }
+                    }
+                }
+            },
+            {
+                id: '8ball',
+                category: '8ball',
+                title: '8 Ball Pool Long Line',
+                game: '8 Ball Pool Miniclip',
+                badge: 'AUTO WIN',
+                image: '8ball.jpg',
+                features: ['Super Long Guideline 3-Cushion', 'Auto Shot Precision', 'Play on All Tables'],
+                brandData: {
+                    'Ultra Plugin': {
+                        status: 'UNDETECTED',
+                        prices: { '1d': 15000, '7d': 40000, '30d': 100000 }
+                    },
+                    'Sakura Internal': {
+                        status: 'UNDETECTED',
+                        prices: { '1d': 20000, '7d': 50000, '30d': 130000 }
+                    }
+                }
+            },
+            {
+                id: 'roblox',
+                category: 'roblox',
+                title: 'Roblox Executor VIP',
+                game: 'Roblox All Games',
+                badge: 'LEVEL 8 EXECUTOR',
+                image: 'roblox.jpg',
+                features: ['Run Any Luau Script', 'Fly & Speed Multiplier', 'Teleport & ESP Tools'],
+                brandData: {
+                    'Senju Executor': {
+                        status: 'UNDETECTED',
+                        prices: { '1d': 20000, '7d': 50000, '30d': 140000 }
+                    },
+                    'VVIP Mods': {
+                        status: 'UNDETECTED',
+                        prices: { '1d': 25000, '7d': 70000, '30d': 180000 }
+                    }
+                }
+            },
+            {
+                id: 'pubg',
+                category: 'pubg',
+                title: 'PUBG Mobile Magic VIP',
+                game: 'PUBG Mobile',
+                badge: 'SAFE MAIN ACC',
+                image: 'pubg.jpg',
+                features: ['Magic Bullet Tracking', 'ESP Skeleton & Vehicle', 'Zero Recoil Weapon'],
+                brandData: {
+                    'VVIP Mods': {
+                        status: 'UNDETECTED',
+                        prices: { '1d': 30000, '7d': 85000, '30d': 220000 }
+                    },
+                    'Ultra Plugin': {
+                        status: 'UNDETECTED',
+                        prices: { '1d': 20000, '7d': 55000, '30d': 140000 }
+                    }
+                }
+            }
+        ];
+
+        let selectedProduct = null;
+        let selectedDuration = '';
+        let selectedBrand = '';
+        const cardDurations = {};
+        const cardBrands = {};
+
+        function formatDurationLabel(key) {
+            if (key === 'life') return 'Lifetime';
+            if (key.endsWith('d')) return key.replace('d', '') + ' Hari';
+            return key;
+        }
+
+        function getBrandObj(product, brand) {
+            if (product.brandData && product.brandData[brand]) {
+                return product.brandData[brand];
+            }
+            return { status: 'UNDETECTED', prices: {} };
+        }
+
+        function getPrice(product, brand, durationKey) {
+            const bObj = getBrandObj(product, brand);
+            if (bObj.prices && bObj.prices[durationKey] !== undefined) {
+                return bObj.prices[durationKey];
+            }
+            if (bObj.prices) {
+                const keys = Object.keys(bObj.prices);
+                if (keys.length > 0) return bObj.prices[keys[0]];
+            }
+            return 0;
+        }
+
+        function renderDurationButtons(item, brand, activeDur) {
+            const bObj = getBrandObj(item, brand);
+            const prices = bObj.prices || {};
+            const keys = Object.keys(prices);
+
+            if (keys.length === 0) return '<span class="text-xs text-gray-500">Tidak ada paket</span>';
+
+            return keys.map(k => {
+                const price = prices[k];
+                const isActive = k === activeDur;
+                const cls = isActive ? 'bg-sakura-500 text-white border-sakura-500' : 'bg-cyber-bg text-gray-300 border-sakura-500/20 hover:border-sakura-500';
+                
+                return `
+                    <button type="button" onclick="setCardDuration('${item.id}', '${k}')" class="py-1.5 px-1 rounded-lg border ${cls} font-bold text-center flex flex-col items-center transition-all">
+                        <span>${formatDurationLabel(k)}</span>
+                        <span class="text-[9px] opacity-80 font-normal">Rp ${(price/1000)}k</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            items.forEach(item => {
+                const availableBrands = Object.keys(item.brandData);
+                
+                if (!cardBrands[item.id] || !availableBrands.includes(cardBrands[item.id])) {
+                    cardBrands[item.id] = availableBrands[0];
+                }
+
+                const currentBrand = cardBrands[item.id];
+                const brandObj = getBrandObj(item, currentBrand);
+                const isMaintenance = brandObj.status === 'MAINTENANCE';
+
+                const availableDurations = Object.keys(brandObj.prices || {});
+
+                if (!cardDurations[item.id] || !availableDurations.includes(cardDurations[item.id])) {
+                    cardDurations[item.id] = availableDurations[0] || '';
+                }
+
+                const currentDuration = cardDurations[item.id];
+                const currentPrice = getPrice(item, currentBrand, currentDuration);
+
+                const card = document.createElement('div');
+                card.className = 'glass-anime rounded-3xl overflow-hidden flex flex-col justify-between border border-sakura-500/20 group hover:border-sakura-500/60 transition-all';
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-44 w-full overflow-hidden">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card via-cyber-card/40 to-transparent"></div>
+                            
+                            <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+                                <span class="bg-sakura-500/90 text-white font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-md shadow-lg">
+                                    ${item.badge}
+                                </span>
+                                
+                                <!-- BADGE STATUS REALTME PER MERK -->
+                                <span id="status-badge-${item.id}" class="text-[10px] font-bold px-2 py-1 rounded-full ${isMaintenance ? 'bg-amber-500/90 text-black border-amber-400' : 'bg-emerald-500/90 text-white'} flex items-center gap-1 shadow-lg">
+                                    <span class="w-1.5 h-1.5 rounded-full ${isMaintenance ? 'bg-black animate-ping' : 'bg-white animate-pulse'}"></span>
+                                    <span>${isMaintenance ? 'MAINTENANCE' : 'UNDETECTED'}</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-2">
+                            <h3 class="font-tech text-base font-bold text-white mb-0.5 group-hover:text-sakura-400 transition-colors">${item.title}</h3>
+                            <p class="text-xs text-sakura-300/80 mb-3 font-semibold">${item.game}</p>
+
+                            <div class="mb-3 bg-cyber-bg/90 p-2 rounded-xl border border-sakura-500/20">
+                                <label class="block text-[10px] text-gray-400 font-bold mb-1">Pilih Merk / Plugin Cheat:</label>
+                                <select onchange="onCardBrandSelect('${item.id}', this.value)" class="w-full bg-cyber-card border border-sakura-500/30 text-cyber-cyan text-xs font-bold rounded-lg py-1 px-2 focus:outline-none">
+                                    ${availableBrands.map(b => {
+                                        const st = item.brandData[b].status === 'MAINTENANCE' ? ' [MAINTENANCE]' : '';
+                                        return `<option value="${b}" ${b === currentBrand ? 'selected' : ''}>${b}${st}</option>`;
+                                    }).join('')}
+                                </select>
+                            </div>
+
+                            <ul class="space-y-1.5 mb-4 text-xs text-gray-300">
+                                ${item.features.map(f => `<li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-sakura-400 text-[10px]"></i> ${f}</li>`).join('')}
+                            </ul>
+
+                            <div class="mb-2">
+                                <label class="block text-[11px] text-gray-400 font-bold mb-1.5">Pilih Durasi Lisensi:</label>
+                                <div id="dur-container-${item.id}" class="grid grid-cols-3 gap-1 text-xs">
+                                    ${renderDurationButtons(item, currentBrand, currentDuration)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-3 border-t border-sakura-500/10 flex items-center justify-between bg-cyber-bg/40">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 font-semibold">Harga Lisensi:</span>
+                            <span id="price-display-${item.id}" class="font-tech text-base font-bold text-cyber-cyan">Rp ${currentPrice.toLocaleString('id-ID')}</span>
+                        </div>
+                        
+                        <!-- TOMBOL BELI KONDISIONAL JIKA MAINTENANCE -->
+                        <div id="buy-btn-container-${item.id}">
+                            ${isMaintenance ? 
+                                `<button disabled class="px-4 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-400 text-xs font-bold cursor-not-allowed flex items-center gap-1.5">
+                                    <i class="fa-solid fa-wrench"></i> Maintenance
+                                </button>` :
+                                `<button onclick="openCheckoutModal('${item.id}')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sakura-500 to-cyber-purple hover:from-sakura-600 hover:to-cyber-purple text-white text-xs font-bold transition-all shadow-md shadow-sakura-500/20 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-cart-plus"></i> Beli
+                                </button>`
+                            }
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+
+            renderStatusTable();
+        }
+
+        // Render Tabel Status Anti-Cheat Realtime
+        function renderStatusTable() {
+            const tbody = document.getElementById('statusTableBody');
+            tbody.innerHTML = '';
+
+            products.forEach(item => {
+                const brands = Object.keys(item.brandData);
+                const brandBadges = brands.map(b => {
+                    const isMaint = item.brandData[b].status === 'MAINTENANCE';
+                    if (isMaint) {
+                        return `<span class="bg-amber-500/20 text-amber-300 border border-amber-500/40 px-1.5 py-0.5 rounded text-[10px] font-bold mr-1">${b} (Maintenance)</span>`;
+                    }
+                    return `<span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.5 rounded text-[10px] font-bold mr-1">${b} (Undetected)</span>`;
+                }).join('');
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="py-3 font-bold text-white">${item.title}</td>
+                    <td class="py-3">${brandBadges}</td>
+                    <td class="py-3 text-gray-400">Kernel Bypass v4.9</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function onCardBrandSelect(productId, brandName) {
+            cardBrands[productId] = brandName;
+            const item = products.find(p => p.id === productId);
+            const brandObj = getBrandObj(item, brandName);
+            const isMaintenance = brandObj.status === 'MAINTENANCE';
+
+            // Update Badge Status
+            const badge = document.getElementById(`status-badge-${productId}`);
+            if (isMaintenance) {
+                badge.className = 'text-[10px] font-bold px-2 py-1 rounded-full bg-amber-500/90 text-black border border-amber-400 flex items-center gap-1 shadow-lg';
+                badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-black animate-ping"></span><span>MAINTENANCE</span>';
+            } else {
+                badge.className = 'text-[10px] font-bold px-2 py-1 rounded-full bg-emerald-500/90 text-white flex items-center gap-1 shadow-lg';
+                badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span><span>UNDETECTED</span>';
+            }
+
+            // Update Tombol Beli
+            const buyContainer = document.getElementById(`buy-btn-container-${productId}`);
+            if (isMaintenance) {
+                buyContainer.innerHTML = `
+                    <button disabled class="px-4 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-400 text-xs font-bold cursor-not-allowed flex items-center gap-1.5">
+                        <i class="fa-solid fa-wrench"></i> Maintenance
+                    </button>`;
+            } else {
+                buyContainer.innerHTML = `
+                    <button onclick="openCheckoutModal('${productId}')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sakura-500 to-cyber-purple hover:from-sakura-600 hover:to-cyber-purple text-white text-xs font-bold transition-all shadow-md shadow-sakura-500/20 flex items-center gap-1.5">
+                        <i class="fa-solid fa-cart-plus"></i> Beli
+                    </button>`;
+            }
+
+            const availableDurs = Object.keys(brandObj.prices || {});
+            if (!availableDurs.includes(cardDurations[productId])) {
+                cardDurations[productId] = availableDurs[0] || '';
+            }
+
+            const currentDur = cardDurations[productId];
+            document.getElementById(`dur-container-${productId}`).innerHTML = renderDurationButtons(item, brandName, currentDur);
+            const newPrice = getPrice(item, brandName, currentDur);
+            document.getElementById(`price-display-${productId}`).textContent = `Rp ${newPrice.toLocaleString('id-ID')}`;
+        }
+
+        function setCardDuration(productId, durationKey) {
+            cardDurations[productId] = durationKey;
+            const item = products.find(p => p.id === productId);
+            const currentBrand = cardBrands[productId] || Object.keys(item.brandData)[0];
+
+            document.getElementById(`dur-container-${productId}`).innerHTML = renderDurationButtons(item, currentBrand, durationKey);
+            const newPrice = getPrice(item, currentBrand, durationKey);
+            document.getElementById(`price-display-${productId}`).textContent = `Rp ${newPrice.toLocaleString('id-ID')}`;
+        }
+
+        function filterCategory(cat, evt) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-sakura-500', 'text-white');
+                btn.classList.add('bg-cyber-card', 'text-gray-300');
+            });
+
+            if (evt && evt.target) {
+                evt.target.classList.remove('bg-cyber-card', 'text-gray-300');
+                evt.target.classList.add('bg-sakura-500', 'text-white');
+            }
+
+            if (cat === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === cat);
+                renderProducts(filtered);
+            }
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => 
+                p.title.toLowerCase().includes(query) || 
+                p.game.toLowerCase().includes(query) ||
+                Object.keys(p.brandData).some(b => b.toLowerCase().includes(query))
+            );
+            renderProducts(filtered);
+        }
+
+        function openCheckoutModal(productId) {
+            selectedProduct = products.find(p => p.id === productId);
+            const availableBrands = Object.keys(selectedProduct.brandData);
+            
+            selectedBrand = cardBrands[productId] || availableBrands[0];
+            selectedDuration = cardDurations[productId] || Object.keys(selectedProduct.brandData[selectedBrand].prices)[0];
+
+            document.getElementById('modalTitle').textContent = selectedProduct.title;
+            
+            const brandSelect = document.getElementById('modalBrandSelect');
+            brandSelect.innerHTML = availableBrands.map(b => {
+                const st = selectedProduct.brandData[b].status === 'MAINTENANCE' ? ' [MAINTENANCE]' : '';
+                return `<option value="${b}" ${b === selectedBrand ? 'selected' : ''}>${b}${st}</option>`;
+            }).join('');
+
+            updateModalPrice();
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function onModalBrandChange(newBrand) {
+            selectedBrand = newBrand;
+            cardBrands[selectedProduct.id] = newBrand;
+            
+            const bObj = getBrandObj(selectedProduct, newBrand);
+            const availableDurs = Object.keys(bObj.prices || {});
+            if (!availableDurs.includes(selectedDuration)) {
+                selectedDuration = availableDurs[0] || '';
+                cardDurations[selectedProduct.id] = selectedDuration;
+            }
+            
+            updateModalPrice();
+        }
+
+        function updateModalPrice() {
+            const price = getPrice(selectedProduct, selectedBrand, selectedDuration);
+            document.getElementById('modalDuration').textContent = formatDurationLabel(selectedDuration) + ' Access';
+            document.getElementById('modalBrandDisplay').textContent = `Merk: ${selectedBrand}`;
+            document.getElementById('modalPrice').textContent = `Rp ${price.toLocaleString('id-ID')}`;
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function processOrderWA() {
+            const name = document.getElementById('custName').value.trim() || 'Pembeli';
+            const wa = document.getElementById('custWA').value.trim() || '-';
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+            const price = getPrice(selectedProduct, selectedBrand, selectedDuration);
+
+            const adminWA = "6281234567890";
+            const message = `Halo Admin JuraganKill, saya ingin order lisensi VIP:%0A%0A` +
+                            `• Game: ${selectedProduct.title}%0A` +
+                            `• Merk/Plugin: ${selectedBrand}%0A` +
+                            `• Durasi: ${formatDurationLabel(selectedDuration)}%0A` +
+                            `• Harga Total: Rp ${price.toLocaleString('id-ID')}%0A` +
+                            `• Nickname: ${name}%0A` +
+                            `• No. WA: ${wa}%0A` +
+                            `• Metode Bayar: ${payment}%0A%0A` +
+                            `Mohon diproses, terima kasih!🌸`;
+
+            window.open(`https://wa.me/${adminWA}?text=${message}`, '_blank');
+        }
+
+        function simulateInstantPay() {
+            const name = document.getElementById('custName').value.trim();
+            if(!name) {
+                alert('Silakan isi Nickname/Nama Anda terlebih dahulu.');
+                return;
+            }
+
+            closeCheckoutModal();
+
+            const randomKey = 'SAKURA-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+            document.getElementById('licenseKeyText').textContent = randomKey;
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        function copyLicenseKey() {
+            const key = document.getElementById('licenseKeyText').textContent;
+            navigator.clipboard.writeText(key);
+            alert('Kode Lisensi berhasil disalin: ' + key);
+        }
+
+        function contactAdmin(topic) {
+            const adminWA = "6281234567890";
+            window.open(`https://wa.me/${adminWA}?text=Halo%20Admin%20Juragankill,%20saya%20butuh%20bantuan%20terkait:%20${encodeURIComponent(topic)}`, '_blank');
+        }
+
+        // Render saat halaman dibuka
+        renderProducts(products);
+    </script>
+</body>
+</html>
