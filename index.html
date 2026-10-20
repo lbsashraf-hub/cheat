@@ -52,6 +52,7 @@
                 radial-gradient(circle at 10% 20%, rgba(255, 42, 141, 0.15) 0%, transparent 35%),
                 radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
             background-attachment: fixed;
+            overflow-x: hidden;
         }
 
         .glass-anime {
@@ -81,12 +82,41 @@
             background: #ff2a8d;
             border-radius: 4px;
         }
+
+        /* CSS ANIMASI KELOPAK BUNGA SAKURA JATUH */
+        .sakura-petal {
+            position: fixed;
+            top: -10px;
+            background: linear-gradient(135deg, #ff80bf 0%, #ff2a8d 100%);
+            border-radius: 150% 0 150% 0;
+            animation: fall linear infinite;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) translateX(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(50vh) translateX(50px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(105vh) translateX(-50px) rotate(360deg);
+                opacity: 0.2;
+            }
+        }
     </style>
 </head>
-<body class="custom-scrollbar min-h-screen flex flex-col justify-between selection:bg-sakura-500 selection:text-white">
+<body class="custom-scrollbar min-h-screen flex flex-col justify-between selection:bg-sakura-500 selection:text-white relative">
+
+    <!-- Container Animasi Sakura Jatuh -->
+    <div id="sakura-container"></div>
 
     <!-- Top Banner Notification -->
-    <div class="bg-gradient-to-r from-sakura-700 via-cyber-purple to-sakura-600 text-xs py-2 px-4 text-center text-white font-bold tracking-wider uppercase flex items-center justify-center gap-2">
+    <div class="relative z-10 bg-gradient-to-r from-sakura-700 via-cyber-purple to-sakura-600 text-xs py-2 px-4 text-center text-white font-bold tracking-wider uppercase flex items-center justify-center gap-2">
         <span class="bg-white/20 px-2 py-0.5 rounded text-[10px] animate-pulse">UPDATE</span>
         <span>🌸 Cek Status Maintenance & Safe Undetected Secara Realtime Per Merk Mod!</span>
     </div>
@@ -96,8 +126,8 @@
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             <a href="#" class="flex items-center gap-2.5 group">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sakura-500 to-cyber-cyan p-0.5 shadow-lg group-hover:rotate-6 transition-transform">
-                    <div class="w-full h-full bg-cyber-bg rounded-[10px] flex items-center justify-center">
-                        <i class="fa-solid font-anime text-sakura-500 text-xl font-bold">🌸</i>
+                    <div class="w-full h-full bg-cyber-bg rounded-[10px] flex items-center justify-center overflow-hidden">
+                        <img src="profil.jpg" alt="Foto Profil" class="w-full h-full object-cover">
                     </div>
                 </div>
                 <div>
@@ -125,7 +155,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-8 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <section class="relative pt-8 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full z-10">
         <div class="relative z-10 glass-anime rounded-3xl p-6 sm:p-8 border border-sakura-500/30 overflow-hidden">
             <div class="max-w-2xl">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sakura-500/20 border border-sakura-500/40 text-sakura-300 text-xs font-bold mb-3">
@@ -135,14 +165,14 @@
                     MOD & CHEAT VIP <span class="sakura-gradient-text">MULTI-VENDOR</span>
                 </h1>
                 <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
-                    Pilih merk mod pilihanmu. Tombol beli akan otomatis terkunci (*disabled*) jika merk pilihan sedang dalam status **MAINTENANCE**.
+                    Pilih merk mod pilihanmu. Tombol beli akan otomatis terkunci (<i>disabled</i>) jika merk pilihan sedang dalam status <b>MAINTENANCE</b>.
                 </p>
             </div>
         </div>
     </section>
 
     <!-- Filter Category Buttons -->
-    <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-6">
+    <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-6 z-10 relative">
         <div class="flex items-center justify-between mb-4">
             <h2 class="font-tech text-lg font-bold text-white flex items-center gap-2">
                 <span class="text-sakura-500">🌸</span> KATALOG GAME TERSEDIA
@@ -176,14 +206,14 @@
     </section>
 
     <!-- Product Grid -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-16">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-16 z-10 relative">
         <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Dynamic Cards Injected Here -->
         </div>
     </main>
 
     <!-- Live Status Section -->
-    <section id="status" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-16">
+    <section id="status" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-16 z-10 relative">
         <div class="glass-anime rounded-3xl p-6 border border-sakura-500/30">
             <div class="flex items-center justify-between mb-6">
                 <div>
@@ -212,7 +242,7 @@
     </section>
 
     <!-- FOOTER LENGKAP 4 KOLOM -->
-    <footer class="bg-cyber-bg/95 border-t border-sakura-500/20 pt-10 pb-6 px-4 sm:px-6 lg:px-8 text-xs text-gray-400">
+    <footer class="bg-cyber-bg/95 border-t border-sakura-500/20 pt-10 pb-6 px-4 sm:px-6 lg:px-8 text-xs text-gray-400 z-10 relative">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div class="space-y-3">
                 <a href="#" class="flex items-center gap-2">
@@ -343,8 +373,33 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC FITUR MAINTENANCE PER MERK -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
+        // SCRIPT PEMBUAT KELOPAK SAKURA JATUH OTOMATIS
+        function createSakuraPetals() {
+            const container = document.getElementById('sakura-container');
+            const petalCount = 25; // Jumlah kelopak bunga
+
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('sakura-petal');
+                
+                // Ukuran acak kelopak
+                const size = Math.random() * 8 + 6;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size * 1.4}px`;
+                
+                // Posisi dan waktu jatuh acak
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.animationDuration = `${Math.random() * 6 + 4}s`; // 4s - 10s
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(petal);
+            }
+        }
+        createSakuraPetals();
+
+        // Data Produk & Merk Cheat
         const products = [
             {
                 id: 'ml',
@@ -356,8 +411,8 @@
                 features: ['Drone View 2x - 5x', 'Map Hack Radar Enemy', 'Cooldown Skill Display', 'Bypass MTP Anti-Cheat'],
                 brandData: {
                     'VVIP Mods': {
-                        status: 'UNDETECTED', // 'UNDETECTED' atau 'MAINTENANCE'
-                        prices: { '3d': 25000, '7d': 70000, '30d': 100000, '60d': 160000 }
+                        status: 'UNDETECTED',
+                        prices: { '3d': 25000, '7d': 50000, '30d': 100000, '60d': 160000 }
                     },
                     'Nova Premium': {
                         status: 'UNDETECTED',
@@ -377,22 +432,18 @@
                 badge: 'NEW UPDATE',
                 image: 'blood-strike.jpg',
                 features: ['ESP Player Box & Health', 'Silent Aimbot Headshot', 'No Recoil & Fast Reload', 'Unlimted UAV Radar'],
-                
-                // =========================================================================
-                // 🌸 CONTOH MENGATUR MERK VVIP MODS MENJADI MAINTENANCE
-                // =========================================================================
                 brandData: {
                     'VVIP Mods': {
-                        status: 'UNDETECTED', // 👈 VVIP Mods dibuat Maintenance
+                        status: 'UNDETECTED',
                         prices: { '3d': 50000, '7d': 100000, '30d': 200000 }
                     },
                     'Ultra Plugin': {
-                        status: 'UNDETECTED',   // 👈 Ultra Plugin tetap jalan
+                        status: 'UNDETECTED',
                         prices: { '3d': 25000, '7d': 50000, '30d': 100000, '60d': 180000 }
                     },
                     'Nova Premium': {
                         status: 'UNDETECTED',
-                        prices: { '3d': 20000, '3d': 25000, '7d': 50000 }
+                        prices: { '2d': 20000, '3d': 25000, '7d': 50000 }
                     }
                 }
             },
@@ -407,11 +458,8 @@
                 brandData: {
                     'VVIP Mods': {
                         status: 'UNDETECTED',
-                        prices: { '1d': 25000, '7d': 75000, '30d': 190000, 'life': 480000 }
-                    },
-                    'Kuroko Injector': {
-                        status: 'MAINTENANCE', // Contoh Maintenance
-                        prices: { '1d': 20000, '7d': 60000, '30d': 150000, 'life': 400000 }
+                        prices: { '3d': 50000, '7d': 100000, '30d': 200000 }
+      
                     }
                 }
             },
@@ -424,32 +472,28 @@
                 image: '8ball.jpg',
                 features: ['Super Long Guideline 3-Cushion', 'Auto Shot Precision', 'Play on All Tables'],
                 brandData: {
-                    'Ultra Plugin': {
+                    'Nova Premium': {
                         status: 'UNDETECTED',
-                        prices: { '1d': 15000, '7d': 40000, '30d': 100000 }
+                        prices: { '3d': 25000, '7d': 50000, '30d': 100000 }
                     },
                     'Sakura Internal': {
-                        status: 'UNDETECTED',
+                        status: 'MAINTENANCE',
                         prices: { '1d': 20000, '7d': 50000, '30d': 130000 }
                     }
                 }
             },
             {
-                id: 'roblox',
-                category: 'roblox',
-                title: 'Roblox Executor VIP',
-                game: 'Roblox All Games',
-                badge: 'LEVEL 8 EXECUTOR',
-                image: 'roblox.jpg',
-                features: ['Run Any Luau Script', 'Fly & Speed Multiplier', 'Teleport & ESP Tools'],
-                brandData: {
-                    'Senju Executor': {
-                        status: 'UNDETECTED',
-                        prices: { '1d': 20000, '7d': 50000, '30d': 140000 }
-                    },
+                id: 'point blank',
+                category: 'point blank',
+                title: 'Point Blank Hack VIP',
+                game: 'Point Blank',
+                badge: 'New Update',
+                image: 'pb.jpg',
+                features: ['No Recoil', 'Wallhack', 'Aimbot'],
+                brandData: {    
                     'VVIP Mods': {
                         status: 'UNDETECTED',
-                        prices: { '1d': 25000, '7d': 70000, '30d': 180000 }
+                        prices: { '1d': 10000, '2d': 15000, '5d': 27000, '10d': 50000 }
                     }
                 }
             },
@@ -564,7 +608,6 @@
                                     ${item.badge}
                                 </span>
                                 
-                                <!-- BADGE STATUS REALTME PER MERK -->
                                 <span id="status-badge-${item.id}" class="text-[10px] font-bold px-2 py-1 rounded-full ${isMaintenance ? 'bg-amber-500/90 text-black border-amber-400' : 'bg-emerald-500/90 text-white'} flex items-center gap-1 shadow-lg">
                                     <span class="w-1.5 h-1.5 rounded-full ${isMaintenance ? 'bg-black animate-ping' : 'bg-white animate-pulse'}"></span>
                                     <span>${isMaintenance ? 'MAINTENANCE' : 'UNDETECTED'}</span>
@@ -605,7 +648,6 @@
                             <span id="price-display-${item.id}" class="font-tech text-base font-bold text-cyber-cyan">Rp ${currentPrice.toLocaleString('id-ID')}</span>
                         </div>
                         
-                        <!-- TOMBOL BELI KONDISIONAL JIKA MAINTENANCE -->
                         <div id="buy-btn-container-${item.id}">
                             ${isMaintenance ? 
                                 `<button disabled class="px-4 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-400 text-xs font-bold cursor-not-allowed flex items-center gap-1.5">
@@ -625,7 +667,6 @@
             renderStatusTable();
         }
 
-        // Render Tabel Status Anti-Cheat Realtime
         function renderStatusTable() {
             const tbody = document.getElementById('statusTableBody');
             tbody.innerHTML = '';
@@ -656,7 +697,6 @@
             const brandObj = getBrandObj(item, brandName);
             const isMaintenance = brandObj.status === 'MAINTENANCE';
 
-            // Update Badge Status
             const badge = document.getElementById(`status-badge-${productId}`);
             if (isMaintenance) {
                 badge.className = 'text-[10px] font-bold px-2 py-1 rounded-full bg-amber-500/90 text-black border border-amber-400 flex items-center gap-1 shadow-lg';
@@ -666,7 +706,6 @@
                 badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span><span>UNDETECTED</span>';
             }
 
-            // Update Tombol Beli
             const buyContainer = document.getElementById(`buy-btn-container-${productId}`);
             if (isMaintenance) {
                 buyContainer.innerHTML = `
@@ -820,7 +859,7 @@
 
         function contactAdmin(topic) {
             const adminWA = "6281234567890";
-            window.open(`https://wa.me/${adminWA}?text=Halo%20Admin%20Juragankill,%20saya%20butuh%20bantuan%20terkait:%20${encodeURIComponent(topic)}`, '_blank');
+            window.open(`https://wa.me/${adminWA}?text=Halo%20Admin%20JuraganKill,%20saya%20butuh%20bantuan%20terkait:%20${encodeURIComponent(topic)}`, '_blank');
         }
 
         // Render saat halaman dibuka
