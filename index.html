@@ -156,17 +156,26 @@
 
     <!-- Hero Section -->
     <section class="relative pt-8 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full z-10">
-        <div class="relative z-10 glass-anime rounded-3xl p-6 sm:p-8 border border-sakura-500/30 overflow-hidden">
-            <div class="max-w-2xl">
+        <div class="relative z-10 glass-anime rounded-3xl p-6 sm:p-8 border border-sakura-500/30 overflow-hidden space-y-5">
+            <div>
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sakura-500/20 border border-sakura-500/40 text-sakura-300 text-xs font-bold mb-3">
                     <i class="fa-solid fa-wallet text-cyber-cyan"></i> Pembayaran GoPay: 085770246502
                 </div>
                 <h1 class="font-tech text-2xl sm:text-4xl font-extrabold leading-tight tracking-wide mb-3 text-white">
                     MOD & CHEAT VIP <span class="sakura-gradient-text">MULTI-VENDOR</span>
                 </h1>
-                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
                     Pilih lisensi cheat pilihanmu, bayar via GoPay, upload bukti pembayaran, lalu kirim konfirmasi langsung ke WhatsApp Admin!
                 </p>
+            </div>
+
+            <!-- KOTAK WARNING / PERINGATAN -->
+            <div class="bg-amber-500/10 border border-amber-500/40 rounded-2xl p-4 text-xs text-amber-200/90 leading-relaxed flex items-start gap-3 shadow-lg">
+                <i class="fa-solid fa-triangle-exclamation text-amber-400 text-base mt-0.5 shrink-0"></i>
+                <div class="space-y-1">
+                    <span class="font-bold text-amber-300 block text-sm tracking-wide">PERINGATAN & KEBIJAKAN PENGGUNAAN:</span>
+                    <p>Gunakan cheat di akun kedua terlebih dahulu untuk testing. Jika dirasa aman, baru gunakan di akun utama. Gunakan cheat dengan bijak dan tetap berhati-hati agar terhindar dari risiko banned. Semua tergantung gameplay kalian masing-masing.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -282,7 +291,7 @@
         </div>
     </footer>
 
-     <!-- CHECKOUT MODAL -->
+    <!-- CHECKOUT MODAL -->
     <div id="checkoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-anime border border-sakura-500/40 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
             <div class="p-5 border-b border-sakura-500/20 flex items-center justify-between">
@@ -341,7 +350,7 @@
                         <input type="text" id="custWA" placeholder="081234567890" class="w-full bg-cyber-bg border border-sakura-500/30 rounded-xl py-2 px-3 text-xs text-gray-200 focus:outline-none focus:border-sakura-500">
                     </div>
 
-                    <!-- Upload Bukti Transfer ke ImgBB -->
+               <!-- Upload Bukti Transfer ke ImgBB -->
                     <div>
                         <label class="block text-xs font-bold text-gray-300 mb-1">Upload Bukti Transfer (Struk Transfer)</label>
                         <input type="file" id="transferProofInput" accept="image/*" class="w-full bg-cyber-bg border border-sakura-500/30 rounded-xl py-2 px-3 text-xs text-gray-300 focus:outline-none file:mr-2 file:py-1 file:px-2 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-sakura-500 file:text-white hover:file:bg-sakura-600">
@@ -349,7 +358,7 @@
                     </div>
                 </div>
 
-                   <!-- Tombol Kirim Format Order ke WA -->
+                <!-- Tombol Kirim Format Order ke WA -->
                 <div class="pt-2">
                     <button id="sendOrderBtn" onclick="submitOrderToWA()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
                         <i class="fa-brands fa-whatsapp text-lg"></i> Upload & Kirim Pesanan ke WA Admin
@@ -509,7 +518,6 @@
         const cardDurations = {};
         const cardBrands = {};
 
-        // FUNGSI LINK WHATSAPP AMAN (OTOMATIS DETEKSI HP ATAU PC)
         function openWhatsApp(message) {
             const phone = "6285770246502";
             const encodedMessage = encodeURIComponent(message);
@@ -704,8 +712,7 @@
             const message = `Halo Admin JuraganKill, saya ingin bertanya mengenai ketersediaan dan detail produk *${productTitle}* dengan merk *${brandName}*. Mohon informasinya.`;
             openWhatsApp(message);
         }
-
-        function renderStatusTable() {
+function renderStatusTable() {
             const tbody = document.getElementById('statusTableBody');
             tbody.innerHTML = '';
 
@@ -728,7 +735,8 @@
                 tbody.appendChild(tr);
             });
         }
-function onCardBrandSelect(productId, brandName) {
+
+        function onCardBrandSelect(productId, brandName) {
             cardBrands[productId] = brandName;
             const item = products.find(p => p.id === productId);
             const brandObj = getBrandObj(item, brandName);
